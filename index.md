@@ -30,7 +30,7 @@
     * 9.1 XX短视频
     * 9.2 XX短视频
 * X1 meeting-recordsinception meeting (yy/mm/dd)
-   * Interception Meeting（2019/03/26）
+   * [Interception Meeting（2019/03/26）](https://milkymoney.github.io/Dashboard/interception)
 * X2 KANBAN
 * X3 auditing-records
 * X4 Tech/Work Report学号-title
