@@ -6,7 +6,7 @@
 * 1、[About(项目概况)](https://milkymoney.github.io/Dashboard/about)
 * 2、[Team profile（团队组建与分工)](https://milkymoney.github.io/Dashboard/team_profile)
 * 3、[Investigation（项目前期调研/竞品分析）](https://milkymoney.github.io/Dashboard/investigation)
-* 4、Vision（项目愿景）
+* 4、[Vision（项目愿景）](https://milkymoney.github.io/Dashboard/vision)
 * 5、Product Backlog （产品特性库） 
 * 6、Requirement specification（需求规格说明书）
     * 6.1 Usecase Diagram（用例图）
