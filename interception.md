@@ -44,4 +44,4 @@
 ### 工作进度安排
 
 ### 业务逻辑和业务范围
-![业务逻辑图](https://github.com/milkymoney/Dashboard/blob/master/pic/MilkyMoney%20%E6%8C%A3%E9%97%B2%E9%92%B1.png "业务流程图")
+![](https://github.com/milkymoney/Dashboard/blob/master/pic/MilkyMoney%20%E6%8C%A3%E9%97%B2%E9%92%B1.png "业务流程图")
