@@ -43,5 +43,15 @@
 
 ### 工作进度安排
 
+第一次迭代 3月27日-4月27日
+
+后端目标：制作一个可以具有基本功能的、可以正常运行的服务端
+
+要求：
+* 提供基础的API，以restful API的形式，重点在于测试提供API的能力与可能遇到的问题
+* 完成数据库的基本设计，能够连接数据库并进行交互
+* 完成对应的Dockerfile，能够基本搭建起数据库和后端服务器
+* 视前端的完成情况尝试进行前后端对接工作
+
 ### 业务逻辑和业务范围
 ![业务逻辑图](https://github.com/milkymoney/Dashboard/blob/master/pic/MilkyMoneyLogic.png?raw=true "业务流程图")
