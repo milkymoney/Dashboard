@@ -1,4 +1,6 @@
-## Week 4 Mar. 26
+# Inteception
+
+## Week 5 Mar. 26
 
 ### 会议主要内容
 1. 确定产品基础功能和增值功能
@@ -53,5 +55,20 @@
 * 完成对应的Dockerfile，能够基本搭建起数据库和后端服务器
 * 视前端的完成情况尝试进行前后端对接工作
 
+## Week6 Apr. 2
+
+### 会议讨论内容
+
+week5完成内容
+* 前端：搭了demo
+* 后端：搭了demo
+* 产品：做了dashboard
+  
+下一周内容
+* 前端：微信登陆api和功能页面
+* 后端：先做数据库接口，Dockerfile。
+* 产品：做完竞品分析，需求分析。重点是用例图、活动图。
+
 ### 业务逻辑和业务范围
 ![业务逻辑图](https://github.com/milkymoney/Dashboard/blob/master/pic/MilkyMoneyLogic.png?raw=true "业务流程图")
+
