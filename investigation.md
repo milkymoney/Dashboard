@@ -123,7 +123,7 @@
 
 * 核心业务流程
 
-  选择帮我送业务 $\rightarrow$ 填写发货线下 $\rightarrow$ 填写收货消息 $\rightarrow$ 选择物品信息 $\rightarrow$ 地图距离标注与预计送达估计 $\rightarrow$ 增值服务与其他设置（包括备注）
+  选择帮我送业务 -> 填写发货线下 -> 填写收货消息 -> 选择物品信息 -> 地图距离标注与预计送达估计 -> 增值服务与其他设置（包括备注）
 
   ![](https://github.com/milkymoney/Dashboard/blob/master/pic/达达_123.png)
 
