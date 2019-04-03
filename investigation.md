@@ -46,7 +46,8 @@
 
 ##### 阿里众包
 
-![](../Xmind/阿里众包_v1.png)
+![](https://github.com/milkymoney/Dashboard/blob/master/pic/阿里众包_v1.png)
+
 
 分析：
 
@@ -59,7 +60,7 @@
 
 ##### 达达
 
-![](../Xmind/达达_v1.png)
+![](https://github.com/milkymoney/Dashboard/blob/master/pic/达达_v1.png)
 
 分析：
 
@@ -99,17 +100,17 @@
 
 * 核心业务流程
 
-  进入首页 $\rightarrow$ 选择数据调研 $\rightarrow$ 选择调研任务 $\rightarrow$ 立即报名 $\rightarrow$ 申领任务 $\rightarrow$ 完成任务（调研） $\rightarrow$ 任务审阅
+  进入首页 -> 选择数据调研 -> 选择调研任务 -> 立即报名 -> 申领任务 -> 完成任务（调研） -> 任务审阅
 
-  ![](../img/A123.png)
+  ![](https://github.com/milkymoney/Dashboard/blob/master/pic/阿里众包_123.png)
 
-  ![](../img/A456.png)
+  ![](https://github.com/milkymoney/Dashboard/blob/master/pic/阿里众包_456.png)
 
-  ![](../img/A789.png)
+  ![](https://github.com/milkymoney/Dashboard/blob/master/pic/阿里众包_789.png)
 
   ”我的“页面
 
-  ![](../img/A10.jpg)
+  ![](https://github.com/milkymoney/Dashboard/blob/master/pic/阿里众包_10.jpg)
 
 * 交互体验与视觉风格
 
@@ -124,15 +125,15 @@
 
   选择帮我送业务 $\rightarrow$ 填写发货线下 $\rightarrow$ 填写收货消息 $\rightarrow$ 选择物品信息 $\rightarrow$ 地图距离标注与预计送达估计 $\rightarrow$ 增值服务与其他设置（包括备注）
 
-  ![](../img/D123.png)
+  ![](https://github.com/milkymoney/Dashboard/blob/master/pic/达达_123.png)
 
-  ![](../img/D456.png)
+  ![](https://github.com/milkymoney/Dashboard/blob/master/pic/达达_456.png)
 
-  ![](../img/D78.png)
+  ![](https://github.com/milkymoney/Dashboard/blob/master/pic/达达_78.png)
 
   个人中心页面 --- 我的订单页面 --- 我的钱包页面
 
-  ![](../img/D91011.png)
+  ![](https://github.com/milkymoney/Dashboard/blob/master/pic/达达_91011.png)
 
 * 交互体验与视觉风格
 
