@@ -70,5 +70,5 @@ week5完成内容
 * 产品：做完竞品分析，需求分析。重点是用例图、活动图。
 
 ### 业务逻辑和业务范围
-![业务逻辑图](https://github.com/milkymoney/Dashboard/blob/master/pic/MilkyMoneyLogic2.png "业务流程图")
+![业务逻辑图](https://github.com/milkymoney/Dashboard/blob/master/pic/MilkyMoneyLogic2.png?raw=true "业务流程图")
 
