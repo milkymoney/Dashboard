@@ -1,0 +1,257 @@
+openapi: 3.0.0
+info:
+  title: milkymoney
+  description: 奶牛挣闲钱系统分析与设计
+  version: 0.0.0
+
+paths:
+  /task:
+    get:
+      summary: 查询已发布任务列表
+      parameters: 
+        - in: query
+          name: page
+          schema:
+            type: integer
+          description: 任务列表的第几页
+          required: true
+        - in: query
+          name: labels
+          schema:
+            $ref: '#/components/schemas/Labels'
+          description: 筛选的标签列表，每一条记录是一条标签，标签格式为“key:value”
+      responses:
+        '200':
+          description: 返回符合条件的已发布任务列表
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task'
+          
+  /task/{taskId}:
+    get:
+      summary: 查询指定id的任务
+      parameters: 
+        - in: path
+          name: taskId
+          schema:
+            type: integer
+          required: true
+          description: 待查询任务id
+      responses:
+        '200':
+          description: 返回被查询的任务
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: 表示是否有指定id的任务
+                  task:
+                    description: 被查询的任务，当查询失败时，返回空
+                    $ref: '#/components/schemas/Task'
+        
+  /acceptTask:
+    post:
+      summary: 接受任务
+      requestBody:
+        description: 发送待发布的任务
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: integer
+                  description: 接受者id
+                taskId:
+                  type: integer
+                  description: 接受任务的id
+      responses:
+        '200':
+          description: 服务器返回结果
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: 描述是否成功接受
+                  message:
+                    type: string
+                    description: 描述错误信息
+  
+  /settleupTask:
+    post:
+      summary: 结算任务
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: integer
+                  description: 接受者id
+                taskId:
+                  type: integer
+                  description: 接受任务的id
+          img/png:
+            schema:
+              type: string
+              format: binary
+      responses:
+        '200':
+          description: 服务器返回结果
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: 描述是否成功结算
+                  message:
+                    type: string
+                    description: 描述错误信息
+  
+  /releaseTask:
+    post:
+      summary: 发布任务
+      description: 用户发送发布任务的请求
+      requestBody:
+        description: 发送待发布的任务
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Task'
+      responses:
+        '200':
+          description: 服务器正常返回
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: 描述发布是否成功
+                  id: 
+                    type: integer
+                    description: 已发布任务的id
+                  message:
+                    type: string
+                    description: 描述错误信息
+  
+  /registor:
+    post:
+      summary: 注册
+      description: 用户注册
+      requestBody:
+        description: 注册用户
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: 服务器正常返回
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: 描述注册是否成功
+                  id: 
+                    type: integer
+                    description: 用户id
+                  message:
+                    type: string
+                    description: 描述错误信息
+      
+  /login:
+    post:
+      summary: 登录
+      description: 用户登录
+      requestBody:
+        description: 登录用户的资料
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: 服务器正常返回
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: 描述登录是否成功
+                  id: 
+                    type: integer
+                    description: 用户id
+                  message:
+                    type: string
+                    description: 描述错误信息
+  
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+        password:
+          type: string
+          writeOnly: true
+        balance:
+          type: integer
+    Task:
+      type: object
+      properties:
+        tid:
+          type: integer
+        type:
+          type: string
+        description:
+          type: string
+        reward:
+          type: integer
+        deadline:
+          type: string
+        label:
+          $ref: '#/components/schemas/Labels'
+        state:
+          type: string
+          description: 任务的状态
+          enum:
+            - opened
+            - closed
+        priority:
+          type: integer
+        maxAccept:
+          type: integer
+        hasAccept:
+          type: integer
+    Labels:
+      type: array
+      description: 标签列表，每一条记录是一条标签，标签格式为“key:value”
+      items:
+        type: string
+        
