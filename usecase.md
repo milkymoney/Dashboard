@@ -89,6 +89,8 @@
 
 **特殊需求：** 支持文本显示的语言国际化
 
+![](https://github.com/milkymoney/Dashboard/blob/master/pic/%E6%8E%A5%E5%8F%97%E4%BB%BB%E5%8A%A1_Usecase_activate.png)
+
 ### 细节用例 Use Case 3 添加标签
 
 **范围：** MilkyMoney 挣闲钱应用
