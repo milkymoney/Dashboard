@@ -40,7 +40,7 @@ paths:
             schema:
               allOf:
                 - $ref: '#/components/schemas/Task'
-                - $ref: '#/components/schemas/WXcode'
+                - $ref: '#/components/schemas/openid'
       responses:
         '200':
           description: 服务器正常返回
@@ -81,7 +81,6 @@ paths:
                     type: boolean
                     description: 表示是否有指定id的任务
                   task:
-                    description: 被查询的任务，当查询失败时，返回空
                     $ref: '#/components/schemas/Task'
         
   /task/accept:
@@ -102,7 +101,7 @@ paths:
                     taskId:
                       type: integer
                       description: 接受任务的id
-                - $ref: '#/components/schemas/WXcode'
+                - $ref: '#/components/schemas/openid'
       responses:
         '200':
           description: 服务器返回结果
@@ -134,7 +133,7 @@ paths:
                     taskId:
                       type: integer
                       description: 接受任务的id
-                - $ref: '#/components/schemas/WXcode'
+                - $ref: '#/components/schemas/openid'
           img/png:
             schema:
               type: string
@@ -161,7 +160,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/WXcode'
+              $ref: '#/components/schemas/openid'
       responses:
         '200':
           description: 返回用户信息
@@ -172,6 +171,23 @@ paths:
                 items:
                   $ref: '#/components/schemas/User'
   
+  /login:
+    post:
+      summary: 登录
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+              description: wx.login()得到的code
+      responses:
+        '200':
+          description: 返回自定义登录态（openid）
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/openid'
+      
 components:
   schemas:
     User:
@@ -181,9 +197,6 @@ components:
           type: integer
         username:
           type: string
-        password:
-          type: string
-          writeOnly: true
         balance:
           type: integer
     Task:
@@ -204,8 +217,7 @@ components:
         deadline:
           description: 任务DDL
           type: string
-        label:
-          description: 任务标列表
+        labels:
           $ref: '#/components/schemas/Labels'
         state:
           type: string
@@ -227,13 +239,14 @@ components:
       description: 标签列表，每一条记录是一条标签，标签格式为“key:value”
       items:
         type: string
+        enum: 
+          - 跑腿
+          - 问卷
+      maximum: 3
  
-    # code:
-    #   description: 微信提供认证code
-    #   type: string
-    WXcode:
+    openid:
       type: object
       properties:
-        code:
-          description: 微信提供认证code
+        openid:
+          description: 微信提供认证openId
           type: string
