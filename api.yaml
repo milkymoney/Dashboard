@@ -40,7 +40,6 @@ paths:
             schema:
               allOf:
                 - $ref: '#/components/schemas/Task'
-                - $ref: '#/components/schemas/openid'
       responses:
         '200':
           description: 服务器正常返回
@@ -63,12 +62,7 @@ paths:
     get:
       summary: 查询指定id的任务
       parameters: 
-        - in: path
-          name: taskId
-          schema:
-            type: integer
-          required: true
-          description: 待查询任务id
+        - $ref: '#/components/parameters/taskId'
       responses:
         '200':
           description: 返回被查询的任务
@@ -83,8 +77,10 @@ paths:
                   task:
                     $ref: '#/components/schemas/Task'
         
-  /task/accept:
-    put:
+  /task/{taskId}/accept:
+    parameters: 
+      - $ref: '#/components/parameters/taskId'
+    post:
       summary: 接受任务
       requestBody:
         description: 发送待发布的任务
@@ -101,7 +97,6 @@ paths:
                     taskId:
                       type: integer
                       description: 接受任务的id
-                - $ref: '#/components/schemas/openid'
       responses:
         '200':
           description: 服务器返回结果
@@ -117,9 +112,27 @@ paths:
                     type: string
                     description: 描述错误信息
   
-  /task/settleup:
-    put:
-      summary: 结算任务
+  /task/{taskId}/settleup:
+    parameters: 
+      - $ref: '#/components/parameters/taskId'
+    get:
+      summary: 接受者查询自己已完成任务的信息
+      description: 接受者完成任务的信息以及证明只有发布者和接受者自身才能看见
+      responses:
+        '200':
+          description: 服务器返回自己提交的完成证明
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  prove:
+                    $ref: '#/components/schemas/prove'
+                description: 已完成的用户及他们的信息和完成证明
+        '400':
+          description: 试图尝试访问不是自己完成的任务信息
+    post:
+      summary: 执行者结算任务
       requestBody:
         content:
           application/json:
@@ -130,14 +143,56 @@ paths:
                     userId:
                       type: integer
                       description: 接受者id
-                    taskId:
-                      type: integer
-                      description: 接受任务的id
-                - $ref: '#/components/schemas/openid'
-          img/png:
+                - $ref: '#/components/schemas/prove'
+      responses:
+        '200':
+          description: 服务器返回结果
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: 描述是否成功结算
+                  message:
+                    type: string
+                    description: 描述错误信息
+    
+  /task/{taskId}/confirm:
+    parameters: 
+      - $ref: '#/components/parameters/taskId'
+    get:
+      summary: 发布者查询用户完成任务的所有信息
+      description: 接受者完成任务的信息以及证明只有发布者才能看见,返回所有完成的信息
+      responses:
+        '200':
+          description: 服务器返回已完成的用户信息以及完成证明
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    user:
+                      $ref: '#/components/schemas/User'
+                    prove:
+                      $ref: '#/components/schemas/prove'
+                description: 已完成的用户及他们的信息和完成证明
+        '400':
+          description: 试图尝试访问不是自己发布的任务信息
+    put:
+      summary: 发布者结算任务
+      requestBody:
+        content:
+          application/json:
             schema:
-              type: string
-              format: binary
+              type: object
+              properties:
+                confirm:
+                  type: boolean
+                  description: 发布者确认任务是否完成
       responses:
         '200':
           description: 服务器返回结果
@@ -154,13 +209,8 @@ paths:
                     description: 描述错误信息
   
   /user:
-    post:
+    get:
       summary: 查询用户信息
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/openid'
       responses:
         '200':
           description: 返回用户信息
@@ -243,6 +293,21 @@ components:
           - 跑腿
           - 问卷
       maximum: 3
+      
+    prove:
+      type: object
+      properties:
+        prove:
+          type: string
+          description: 证明的图片，转换成string
+        format:
+          type: string
+          description: 证明图片的图片格式
+          enum:
+            - jpg
+            - jpeg
+            - png
+            - gif
  
     openid:
       type: object
@@ -250,3 +315,12 @@ components:
         openid:
           description: 微信提供认证openId
           type: string
+  
+  parameters: 
+    taskId:
+      in: path
+      name: taskId
+      schema:
+        type: integer
+      required: true
+      description: 任务id
