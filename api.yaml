@@ -13,13 +13,24 @@ paths:
           name: page
           schema:
             type: integer
+            default: 1
           description: 任务列表的第几页
           required: true
         - in: query
-          name: labels
+          name: myrelease
+          description: 查询自己发布的任务
           schema:
-            $ref: '#/components/schemas/Labels'
-          description: 筛选的标签列表，每一条记录是一条标签，标签格式为“key:value”
+            type: boolean
+        - in: query
+          name: myacceptance
+          description: 查询自己接受的任务
+          schema:
+            type: boolean
+        - in: query
+          name: keyword
+          schema:
+            type: string
+          description: 搜索的关键字列表
       responses:
         '200':
           description: 返回符合条件的已发布任务列表
