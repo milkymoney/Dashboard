@@ -285,11 +285,11 @@ components:
           description: 已接受人数
           type: integer
     Labels:
-      type: array
-      description: 标签列表，每一条记录是一条标签，标签格式为“key:value”
-      items:
-        type: string
-      maximum: 3
+      type: string
+      description: 标签列表，两个标签之间用空格分割，标签数不超过3个，单个标签长度不超过3
+      example: 
+        - '紧急 重酬'
+        - '实验室 标数据 AI'
       
     prove:
       type: object
