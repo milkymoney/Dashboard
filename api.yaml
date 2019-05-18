@@ -103,7 +103,7 @@ paths:
                     type: boolean
                     description: 表示是否修改成功
         '400':
-          description: 试图尝试访问不是自己完成的任务信息
+          description: 试图尝试访问不是自己发布的任务信息
       
   /task/{taskId}/accept:
     parameters: 
