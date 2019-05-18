@@ -129,23 +129,12 @@ paths:
                     description: 返回错误信息
         '400':
           description: 试图尝试访问不是自己发布的任务信息
+  
   /task/{taskId}/accept:
     parameters: 
       - $ref: '#/components/parameters/taskId'
     post:
       summary: 接受任务
-      requestBody:
-        description: 发送待发布的任务
-        required: true
-        content:
-          application/json:
-            schema:
-              allOf:
-                - type: object
-                  properties:
-                    userId:
-                      type: integer
-                      description: 接受者id
       responses:
         '200':
           description: 服务器返回结果
@@ -186,13 +175,7 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - type: object
-                  properties:
-                    userId:
-                      type: integer
-                      description: 接受者id
-                - $ref: '#/components/schemas/prove'
+              $ref: '#/components/schemas/prove'
       responses:
         '200':
           description: 服务器返回结果
