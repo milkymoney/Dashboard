@@ -103,6 +103,9 @@ paths:
                   success:
                     type: boolean
                     description: 表示是否修改成功
+                  message:
+                    type: string
+                    description: 返回错误信息
         '400':
           description: 试图尝试访问不是自己发布的任务信息
     delete:
@@ -121,9 +124,11 @@ paths:
                   success:
                     type: boolean
                     description: 表示是否删除成功
+                  message:
+                    type: string
+                    description: 返回错误信息
         '400':
           description: 试图尝试访问不是自己发布的任务信息
-      
   /task/{taskId}/accept:
     parameters: 
       - $ref: '#/components/parameters/taskId'
