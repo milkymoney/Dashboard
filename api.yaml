@@ -49,8 +49,7 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/Task'
+              $ref: '#/components/schemas/Task'
       responses:
         '200':
           description: 服务器正常返回
@@ -92,6 +91,13 @@ paths:
       description: 发布者任务被接取前可以随时修改任务信息，但是在任务被接受后则不能有任何改动
       parameters: 
         - $ref: '#/components/parameters/taskId'
+      requestBody:
+        description: 发送修改后的任务
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Task'
       responses:
         '200':
           description: 修改结果
@@ -129,8 +135,9 @@ paths:
                     description: 返回错误信息
         '400':
           description: 试图尝试访问不是自己发布的任务信息
-  
-  /task/{taskId}/accept:
+      
+                    
+  /task/accept/{taskId}:
     parameters: 
       - $ref: '#/components/parameters/taskId'
     post:
@@ -150,7 +157,7 @@ paths:
                     type: string
                     description: 描述错误信息
   
-  /task/{taskId}/settleup:
+  /task/settleup/{taskId}:
     parameters: 
       - $ref: '#/components/parameters/taskId'
     get:
@@ -162,11 +169,13 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  prove:
-                    $ref: '#/components/schemas/prove'
-                description: 已完成的用户及他们的信息和完成证明
+                allOf:
+                  - type: object
+                    properties:
+                      prove:
+                        $ref: '#/components/schemas/prove'
+                    description: 已完成的用户及他们的信息和完成证明
+                  - $ref: '#/components/schemas/Task'
         '400':
           description: 试图尝试访问不是自己完成的任务信息
     post:
@@ -191,7 +200,7 @@ paths:
                     type: string
                     description: 描述错误信息
     
-  /task/{taskId}/confirm:
+  /task/confirm/{taskId}:
     parameters: 
       - $ref: '#/components/parameters/taskId'
     get:
@@ -214,7 +223,7 @@ paths:
                 description: 已完成的用户及他们的信息和完成证明
         '400':
           description: 试图尝试访问不是自己发布的任务信息
-    put:
+    post:
       summary: 发布者结算任务
       requestBody:
         content:
@@ -275,7 +284,6 @@ paths:
                     type: string
                     description: 描述错误信息
       
-  
   /login:
     post:
       summary: 登录
@@ -303,7 +311,11 @@ components:
         username:
           type: string
         balance:
+          description: 用户余额
           type: integer
+        head:
+          description: 用户头像。如果为空字符串，表示为用微信默认头像。否则将为自定义头像jpeg格式图像的编码值。
+          type: string
     Task:
       type: object
       properties:
