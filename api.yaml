@@ -255,6 +255,9 @@ components:
         type:
           description: 任务类型
           type: string
+          enum: 
+            - 跑腿
+            - 问卷
         description:
           description: 任务描述
           type: string
@@ -286,9 +289,6 @@ components:
       description: 标签列表，每一条记录是一条标签，标签格式为“key:value”
       items:
         type: string
-        enum: 
-          - 跑腿
-          - 问卷
       maximum: 3
       
     prove:
