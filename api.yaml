@@ -107,7 +107,7 @@ paths:
           description: 试图尝试访问不是自己发布的任务信息
     delete:
       summary: 删除任务
-      description: 考虑到已经发布的任务可能存在因为其他不可抗逆因素而需要取消的情况
+      description: 考虑到已经发布的任务可能存在因为其他不可抗逆因素而需要取消的情况，任务允许删除。条件是该任务未被接受或者被接受时间不超过十分钟
       parameters: 
         - $ref: '#/components/parameters/taskId'
       responses:
