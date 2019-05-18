@@ -264,6 +264,29 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/User'
+    put:
+      summary: 修改用户个人信息
+      description: 用户可能希望使用和微信不同的ID、头像以及个人信息
+      requestBody:
+        content:
+          application/json:
+            schema:
+                $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: 返回用户信息
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: 描述是否修改结算
+                  message:
+                    type: string
+                    description: 描述错误信息
+      
   
   /login:
     post:
