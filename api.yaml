@@ -89,11 +89,12 @@ paths:
                     $ref: '#/components/schemas/Task'
     put:
       summary: 修改任务信息
+      description: 发布者任务被接取前可以随时修改任务信息，但是在任务被接受后则不能有任何改动
       parameters: 
         - $ref: '#/components/parameters/taskId'
       responses:
         '200':
-          description: 发布者任务被接取前可以随时修改任务信息，但是在任务被接受后则不能有任何改动
+          description: 修改结果
           content:
             application/json:
               schema:
