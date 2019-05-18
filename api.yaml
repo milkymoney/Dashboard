@@ -94,9 +94,6 @@ paths:
                     userId:
                       type: integer
                       description: 接受者id
-                    taskId:
-                      type: integer
-                      description: 接受任务的id
       responses:
         '200':
           description: 服务器返回结果
