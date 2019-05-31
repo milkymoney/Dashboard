@@ -180,18 +180,7 @@ paths:
           description: 试图尝试访问不是自己完成的任务信息
     post:
       summary: 执行者结算任务
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                prove:
-                  type: string
-                  description: 证明图片的二进制串
-                title:
-                  type: string
-                  description: 文件名
+      description: 证明图片利用微信提供API附在请求中
       responses:
         '200':
           description: 服务器返回结果
