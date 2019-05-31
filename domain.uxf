@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>830</x>
+      <y>390</y>
+      <w>100</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>task
+-
+tid
+type
+description
+reward
+deadline
+labels
+state
+priority
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>500</x>
+      <y>430</y>
+      <w>100</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>user
+-
+uid
+username
+password
+balance</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>480</x>
+      <y>650</y>
+      <w>100</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>acception
+-
+acceptDate</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>540</x>
+      <y>520</y>
+      <w>30</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>490</x>
+      <y>230</y>
+      <w>100</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>release
+-
+releaseDate</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>520</x>
+      <y>270</y>
+      <w>30</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;160.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>580</x>
+      <y>250</y>
+      <w>310</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=n
+m2=n
+release &gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;290.0;20.0;290.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>570</x>
+      <y>550</y>
+      <w>320</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=n
+m2=n
+accept &gt;</panel_attributes>
+    <additional_attributes>10.0;130.0;300.0;130.0;300.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>590</x>
+      <y>470</y>
+      <w>260</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-
+has
+m1=n
+m2=n
+</panel_attributes>
+    <additional_attributes>10.0;20.0;240.0;20.0</additional_attributes>
+  </element>
+</diagram>
