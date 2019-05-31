@@ -341,10 +341,17 @@ components:
           $ref: '#/components/schemas/Labels'
         state:
           type: string
-          description: 任务的状态
+          description: 
+            任务的状态，这个状态对发布者和接受者会不同。
+            发布者会看到的状态有等待审核（verify），已发布(open)，已结束（close）
+            接收者会看到的状态有等待接受（open)，已接受（accecpt），等待发布者确认完成（commit），完成（close）
           enum:
-            - opened
-            - closed
+            - verify
+            - open
+            - close
+            - accept
+            - commit
+            - close
         priority:
           description: 任务优先级
           type: integer
