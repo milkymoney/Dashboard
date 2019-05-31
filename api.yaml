@@ -172,9 +172,9 @@ paths:
                 allOf:
                   - type: object
                     properties:
-                      prove:
-                        $ref: '#/components/schemas/prove'
-                    description: 已完成的用户及他们的信息和完成证明
+                      proveURL:
+                        type: string
+                        description: 证明图片的URL地址
                   - $ref: '#/components/schemas/Task'
         '400':
           description: 试图尝试访问不是自己完成的任务信息
@@ -184,7 +184,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/prove'
+              type: object
+              properties:
+                prove:
+                  type: string
+                  description: 证明图片的二进制串
+                title:
+                  type: string
+                  description: 文件名
       responses:
         '200':
           description: 服务器返回结果
@@ -218,8 +225,9 @@ paths:
                   properties:
                     user:
                       $ref: '#/components/schemas/User'
-                    prove:
-                      $ref: '#/components/schemas/prove'
+                    proveURL:
+                      type: string
+                      description: 证明图片的URL地址
                 description: 已完成的用户及他们的信息和完成证明
         '400':
           description: 试图尝试访问不是自己发布的任务信息
@@ -367,22 +375,6 @@ components:
       example: 
         - '紧急 重酬'
         - '实验室 标数据 AI'
-      
-    prove:
-      type: object
-      properties:
-        prove:
-          type: string
-          description: 证明的图片，转换成string
-        format:
-          type: string
-          description: 证明图片的图片格式
-          enum:
-            - jpg
-            - jpeg
-            - png
-            - gif
- 
     openid:
       type: object
       properties:
