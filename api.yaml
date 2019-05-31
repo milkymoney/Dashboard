@@ -17,16 +17,6 @@ paths:
           description: 任务列表的第几页
           required: true
         - in: query
-          name: myrelease
-          description: 查询自己发布的任务
-          schema:
-            type: boolean
-        - in: query
-          name: myacceptance
-          description: 查询自己接受的任务
-          schema:
-            type: boolean
-        - in: query
           name: keyword
           schema:
             type: string
@@ -136,7 +126,50 @@ paths:
         '400':
           description: 试图尝试访问不是自己发布的任务信息
       
-                    
+  
+  /task/release:
+    get:
+      summary: 查询自己发布任务列表
+      parameters: 
+        - in: query
+          name: page
+          schema:
+            type: integer
+            default: 1
+          description: 任务列表的第几页
+          required: true
+      responses:
+        '200':
+          description: 返回自己发布任务列表
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task'
+                  
+  
+  /task/acceptance:
+    get:
+      summary: 查询自己接受的任务列表
+      parameters: 
+        - in: query
+          name: page
+          schema:
+            type: integer
+            default: 1
+          description: 任务列表的第几页
+          required: true
+      responses:
+        '200':
+          description: 返回自己接受的任务列表
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task'
+                  
   /task/accept/{taskId}:
     parameters: 
       - $ref: '#/components/parameters/taskId'
