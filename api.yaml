@@ -138,6 +138,11 @@ paths:
             default: 1
           description: 任务列表的第几页
           required: true
+        - in: query
+          name: keyword
+          schema:
+            type: string
+          description: 搜索的关键字列表
       responses:
         '200':
           description: 返回自己发布任务列表
@@ -160,6 +165,11 @@ paths:
             default: 1
           description: 任务列表的第几页
           required: true
+        - in: query
+          name: keyword
+          schema:
+            type: string
+          description: 搜索的关键字列表
       responses:
         '200':
           description: 返回自己接受的任务列表
