@@ -8,6 +8,35 @@ info:
   version: 0.0.0
 
 paths:
+  /task:
+    get:
+      summary: 查询当前所有未结束的任务
+      description: 包括等待接受（opened)，已接受（accecpted），等待发布者确认完成（commited）的任务
+      parameters: 
+        - in: query
+          name: page
+          schema:
+            type: integer
+            default: 1
+          description: 任务列表的第几页
+          required: true
+        - in: query
+          name: keyword
+          schema:
+            type: string
+          description: 搜索的关键字列表
+      responses:
+        '200':
+          description: 返回自己接受的任务列表
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task'
+        '401':
+          description: 登录状态过期，需要重新调用/login api
+          
   /task/publisher:
     get:
       summary: 查询自己发布任务列表
@@ -429,6 +458,9 @@ components:
         hasAccept:
           description: 已接受人数
           type: integer
+        publisher:
+          description: 发布者用户名
+          type: string
     Labels:
       type: string
       description: 标签列表，两个标签之间用空格分割，标签数不超过3个，单个标签长度不超过3
