@@ -1,0 +1,488 @@
+openapi: 3.0.0
+info:
+  title: milkymoney
+  description: |
+    奶牛挣闲钱系统分析与设计  
+    注意：
+    1. 一个任务对发布者（publisher）和接受者（recipient）会有不同的表现，发布者和接受者对任务的操作应该使用对应的API
+  version: 0.0.0
+
+paths:
+  /task:
+    get:
+      summary: 查询当前所有未结束的任务
+      description: 包括等待接受（opened)，已接受（accecpted），等待发布者确认完成（commited）的任务
+      parameters: 
+        - in: query
+          name: page
+          schema:
+            type: integer
+            default: 1
+          description: 任务列表的第几页
+          required: true
+        - in: query
+          name: keyword
+          schema:
+            type: string
+          description: 搜索的关键字列表
+      responses:
+        '200':
+          description: 返回自己接受的任务列表
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task'
+        '401':
+          description: 登录状态过期，需要重新调用/login api
+          
+  /task/publisher:
+    get:
+      summary: 查询自己发布任务列表
+      parameters: 
+        - in: query
+          name: page
+          schema:
+            type: integer
+            default: 1
+          description: 任务列表的第几页
+          required: true
+        - in: query
+          name: keyword
+          schema:
+            type: string
+          description: 搜索的关键字列表
+      responses:
+        '200':
+          description: 返回被查询的任务
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task'
+        '401':
+          description: 登录状态过期，需要重新调用/login api
+    post:
+      summary: 发布任务
+      description: 用户发送发布任务的请求
+      requestBody:
+        description: 发送待发布的任务
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Task'
+      responses:
+        '200':
+          description: 服务器正常返回
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: 描述发布是否成功
+                  id: 
+                    type: integer
+                    description: 已发布任务的id
+                  message:
+                    type: string
+                    description: 描述错误信息
+        '401':
+          description: 登录状态过期，需要重新调用/login api
+          
+  /task/publisher/{taskId}:
+    get:
+      summary: 查询自己发布的指定id的任务
+      parameters: 
+        - $ref: '#/components/parameters/taskId'
+      responses:
+        '200':
+          description: 返回被查询的任务
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: 表示是否有指定id的任务
+                  task:
+                    $ref: '#/components/schemas/Task'
+        '401':
+          description: 登录状态过期，需要重新调用/login api
+    put:
+      summary: 修改任务信息
+      description: 发布者任务被接取前可以随时修改任务信息，但是在任务被接受后则不能有任何改动
+      parameters: 
+        - $ref: '#/components/parameters/taskId'
+      requestBody:
+        description: 发送修改后的任务
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Task'
+      responses:
+        '200':
+          description: 修改结果
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: 表示是否修改成功
+                  message:
+                    type: string
+                    description: 返回错误信息
+        '400':
+          description: 试图尝试访问不是自己发布的任务信息
+        '401':
+          description: 登录状态过期，需要重新调用/login api
+    delete:
+      summary: 删除任务
+      description: 考虑到已经发布的任务可能存在因为其他不可抗逆因素而需要取消的情况，任务允许删除。条件是该任务未被接受或者被接受时间不超过十分钟
+      parameters: 
+        - $ref: '#/components/parameters/taskId'
+      responses:
+        '200':
+          description: 删除结果
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: 表示是否删除成功
+                  message:
+                    type: string
+                    description: 返回错误信息
+        '400':
+          description: 试图尝试访问不是自己发布的任务信息
+        '401':
+          description: 登录状态过期，需要重新调用/login api
+      
+  
+  /task/publisher/confirm/{taskId}:
+    parameters: 
+      - $ref: '#/components/parameters/taskId'
+    get:
+      summary: 发布者查询用户完成任务的所有信息
+      description: 接受者完成任务的信息以及证明只有发布者才能看见,返回所有完成者的信息
+      responses:
+        '200':
+          description: 服务器返回已完成的用户信息以及完成证明
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    user:
+                      $ref: '#/components/schemas/User'
+                    proveURL:
+                      type: string
+                      description: 证明图片的URL地址
+                description: 已完成的用户及他们的信息和完成证明
+        '400':
+          description: 试图尝试访问不是自己发布的任务信息
+        '401':
+          description: 登录状态过期，需要重新调用/login api
+    post:
+      summary: 发布者结算任务
+      description: 确认一组用户的提交情况。确认之后任务状态变为close
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                confirm:
+                  type: boolean
+                  description:  |
+                    发布者确认任务是否完成。  
+                    True表示确认任务完成，False表示拒绝任务完成。拒绝后提交从提交列表删除。
+                users:
+                  description: 确认或拒绝完成的用户id列表。
+                  type: array
+                  items:
+                    type: integer
+      responses:
+        '200':
+          description: 服务器返回结果
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: 描述是否成功结算
+                  message:
+                    type: string
+                    description: 描述错误信息
+        '401':
+          description: 登录状态过期，需要重新调用/login api
+  
+  /task/recipient:
+    get:
+      summary: 查询自己接受的任务列表
+      description: 包括已接受、已完成、已结束的任务
+      parameters: 
+        - in: query
+          name: page
+          schema:
+            type: integer
+            default: 1
+          description: 任务列表的第几页
+          required: true
+        - in: query
+          name: keyword
+          schema:
+            type: string
+          description: 搜索的关键字列表
+      responses:
+        '200':
+          description: 返回自己接受的任务列表
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task'
+        '401':
+          description: 登录状态过期，需要重新调用/login api
+          
+  /task/recipient/{taskId}:
+    parameters: 
+      - $ref: '#/components/parameters/taskId'
+    get:
+      summary: 接受者查询任务的信息
+      responses:
+        '200':
+          description: 返回被查询的任务
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: 表示是否有指定id的任务
+                  task:
+                    $ref: '#/components/schemas/Task'
+        '400':
+          description: 试图尝试访问不是自己完成的任务信息
+        '401':
+          description: 登录状态过期，需要重新调用/login api
+    post:
+      summary: 接受任务
+      responses:
+        '200':
+          description: 服务器返回结果
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: 描述是否成功接受
+                  message:
+                    type: string
+                    description: 描述错误信息
+        '401':
+          description: 登录状态过期，需要重新调用/login api
+  
+  /task/recipient/settleup/{taskId}:
+    parameters: 
+      - $ref: '#/components/parameters/taskId'
+    get:
+      summary: 接受者查询自己已完成任务的信息
+      description: 接受者完成任务的信息以及证明只有发布者和接受者自身才能看见
+      responses:
+        '200':
+          description: 服务器返回自己提交的完成证明
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      proveURL:
+                        type: string
+                        description: 证明图片的URL地址
+                  - $ref: '#/components/schemas/Task'
+        '400':
+          description: 试图尝试访问不是自己完成的任务信息
+        '401':
+          description: 登录状态过期，需要重新调用/login api
+    post:
+      summary: 执行者结算任务
+      description: 证明图片利用微信提供API附在请求中
+      responses:
+        '200':
+          description: 服务器返回结果
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: 描述是否成功结算
+                  message:
+                    type: string
+                    description: 描述错误信息
+        '401':
+          description: 登录状态过期，需要重新调用/login api
+                    
+    
+  /user:
+    get:
+      summary: 查询用户信息
+      responses:
+        '200':
+          description: 返回用户信息
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+    put:
+      summary: 修改用户个人信息
+      description: 用户可能希望使用和微信不同的ID、头像以及个人信息
+      requestBody:
+        content:
+          application/json:
+            schema:
+                $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: 返回用户信息
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: 描述是否修改结算
+                  message:
+                    type: string
+                    description: 描述错误信息
+        '401':
+          description: 登录状态过期，需要重新调用/login api
+      
+  /user/login:
+    post:
+      summary: 登录
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+              description: wx.login()得到的code
+      responses:
+        '200':
+          description: 返回自定义登录态（openid）
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/openid'
+        '401':
+          description: 登录状态过期，需要重新调用/login api
+      
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+        balance:
+          description: 用户余额
+          type: integer
+        head:
+          description: 用户头像。如果为空字符串，表示为用微信默认头像。否则将为自定义头像jpeg格式图像的编码值。
+          type: string
+    Task:
+      type: object
+      properties:
+        tid:
+          description: 任务id
+          type: integer
+        type:
+          description: 任务类型
+          type: string
+          enum: 
+            - 跑腿
+            - 问卷
+        description:
+          description: 任务描述
+          type: string
+        reward:
+          description: 任务报酬
+          type: integer
+        deadline:
+          description: 任务DDL
+          type: string
+        labels:
+          $ref: '#/components/schemas/Labels'
+        state:
+          type: string
+          description: |
+            任务的状态，这个状态对发布者和接受者会不同。    
+            接收者会看到的状态有等待接受（opened, 0)，已接受（accecpted, 1），等待发布者确认完成（commited, 2），完成（closed, 3）
+            发布者会看到的状态有等待审核（pending, 4），已发布(opened, 5)，已结束（closed, 6）
+          enum:
+            - opened (0)
+            - accepted (1)
+            - commited (2)
+            - closed (3)
+            - pending (4)
+            - opened (5)
+            - closed (6)
+        priority:
+          description: 任务优先级
+          type: integer
+        maxAccept:
+          description: 最大接受人数
+          type: integer
+        hasAccept:
+          description: 已接受人数
+          type: integer
+        publisher:
+          description: 发布者用户名
+          type: string
+    Labels:
+      type: string
+      description: 标签列表，两个标签之间用空格分割，标签数不超过3个，单个标签长度不超过3
+      example: 
+        - '紧急 重酬'
+        - '实验室 标数据 AI'
+    openid:
+      type: object
+      properties:
+        openid:
+          description: 微信提供认证openId
+          type: string
+  
+  parameters: 
+    taskId:
+      in: path
+      name: taskId
+      schema:
+        type: integer
+      required: true
+      description: 任务id
