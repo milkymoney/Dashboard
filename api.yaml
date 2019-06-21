@@ -400,6 +400,37 @@ paths:
                 $ref: '#/components/schemas/openid'
         '401':
           description: 登录状态过期，需要重新调用/login api
+          
+  /user/balance:
+    put:
+      summary: （测试用）充值接口
+      description: 模拟充值接口，前端发送需要增加的金额到后端，后端增加balance
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                recharge:
+                  type: integer
+                  description: 充值的金额
+      responses:
+        '200':
+          description: 返回充值结果
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: 描述是否成功充值
+                  balance:
+                    type: integer
+                    description: 操作后余额
+        '401':
+          description: 登录状态过期，需要重新调用/login api
+      
       
 components:
   schemas:
