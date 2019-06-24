@@ -197,18 +197,25 @@ paths:
           description: 登录状态过期，需要重新调用/login api
     post:
       summary: 发布者结算任务
-      description: 确认一组用户的提交情况。确认之后任务状态变为close
+      description: >
+        确认一组用户的提交情况。每次只能发送checkstate一样的一组users给后端。如果需要发送的users包含多个状态，需要多次发送。
       requestBody:
         content:
           application/json:
             schema:
               type: object
               properties:
-                confirm:
-                  type: boolean
-                  description:  |
-                    发布者确认任务是否完成。  
-                    True表示确认任务完成，False表示拒绝任务完成。拒绝后提交从提交列表删除。
+                checkstate:
+                  type: string
+                  description: |
+                    状态含义  
+                    unchecked: 未检查  
+                    passed: 通过  
+                    unpass: 拒绝接受 
+                  enum: 
+                   - unchecked
+                   - passed
+                   - unpassed
                 users:
                   description: 确认或拒绝完成的用户id列表。
                   type: array
