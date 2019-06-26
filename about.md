@@ -17,8 +17,8 @@
 
 请在这里给出重要的软件分析与设计文档链接（暂无）
 
-- [需求规格说明书](https://sysu-swsad.github.io/dashboard/06-requirements)
-- [软件设计说明书](https://sysu-swsad.github.io/dashboard/07-designs)
+- [需求规格说明书](https://github.com/milkymoney/Dashboard/blob/master/SRS/SRS.md)
+- [软件设计说明书](https://github.com/milkymoney/Dashboard/blob/master/SDS.md)
 - [产品演示视频](https://sysu-swsad.github.io/dashboard/01-about)
 
 ### Iterations
@@ -32,4 +32,20 @@
 2. 前端完成初步项目原型，设计好并实现基础的界面
 3. 后端完成数据库设计，基本API的开发
 4. 尝试前后端对接
+
+#### Iteration 2
+
+##### 目标：
+
+1. 完成产品原型制作
+2. 实现前后端对接
+3. 实现基础API
+
+#### Iteration 3
+
+##### 目标：
+
+1. 完成单元测试
+2. 完成UX与UI测试
+3. 完成附加功能
 
