@@ -26,7 +26,7 @@
     * 8.2 REST API 设计规范
     * 8.3 架构设计、详细设计（BCE方法）到应用程序框架映射指南
     * 8.4 [部署说明](https://milkymoney.github.io/Dashboard/Installation_deployment_instructions)
-* 9、[成品展示](https://milkymoney.github.io/Dashboard/product_display)
+* 9、[成品展示](https://github.com/milkymoney/Dashboard/blob/gh-pages/product_display.md)
 * X1 meeting-recordsinception meeting (yy/mm/dd)
    * [Interception Meeting（2019/03/26）](https://milkymoney.github.io/Dashboard/interception)
    * [Iteration 1(2019/04/16)](https://milkymoney.github.io/Dashboard/iteration1)
@@ -34,8 +34,10 @@
    * [Iteration 3(2019/06/4)](https://milkymoney.github.io/Dashboard/iteration3)
 * X2 [KANBAN](https://github.com/orgs/milkymoney/projects?query=is%3Aclosed)
 * X3 auditing-records
-* X4 个人技术报告
-   * [wtysos](https://github.com/milkymoney/Dashboard/blob/master/FinalReport/16340240_%E5%90%B4%E5%A4%A9%E6%89%AC.md)
-   * [wuyy1234](https://github.com/milkymoney/Dashboard/blob/master/FinalReport/16340244_%E4%BC%8D%E5%AE%87%E9%98%B3.md)
-   * [erosWu](https://github.com/milkymoney/Dashboard/blob/master/FinalReport/16340239_%E5%90%B4%E8%89%AF%E6%BE%94.md)
-* X5 [小组分工与贡献率说明](https://milkymoney.github.io/Dashboard/final)
+* X4 Tech/Work Report
+   * 学号-title
+* X5 Final Report
+   * [学号-wtysos](https://github.com/milkymoney/Dashboard/blob/master/FinalReport/16340240_%E5%90%B4%E5%A4%A9%E6%89%AC.md)
+   * [学号-wuyy1234](https://github.com/milkymoney/Dashboard/blob/master/FinalReport/16340244_%E4%BC%8D%E5%AE%87%E9%98%B3.md)
+   * [学号-erosWu](https://github.com/milkymoney/Dashboard/blob/master/FinalReport/16340239_%E5%90%B4%E8%89%AF%E6%BE%94.md)
+* X6 [小组分工与贡献率说明](https://milkymoney.github.io/Dashboard/final)
