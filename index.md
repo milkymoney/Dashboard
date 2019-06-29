@@ -8,7 +8,7 @@
 * 3、[Investigation（项目前期调研/竞品分析）](https://milkymoney.github.io/Dashboard/investigation)
 * 4、[Vision（项目愿景）](https://milkymoney.github.io/Dashboard/vision)
 * 5、[Product Backlog （产品特性库）](https://milkymoney.github.io/Dashboard/product_backlog)
-* 6、Requirement specification（需求规格说明书）
+* 6、[Requirement specification（需求规格说明书）](https://milkymoney.github.io/Dashboard/SRS)
     * 6.1 [Usecase Diagram（用例图）](https://milkymoney.github.io/Dashboard/usercase_dia)
     * 6.2 [Use Cases（用例+活动图）](https://milkymoney.github.io/Dashboard/usecase)
     * 6.3 [Domian Models（领域模型）](https://milkymoney.github.io/Dashboard/domain)
