@@ -34,7 +34,7 @@
    * [Iteration 1(2019/04/16)](https://milkymoney.github.io/Dashboard/iteration1)
    * [Iteration 2(2019/05/14)](https://milkymoney.github.io/Dashboard/iteration2)
    * [Iteration 3(2019/06/4)](https://milkymoney.github.io/Dashboard/iteration3)
-* X2 KANBAN
+* X2 [KANBAN](https://github.com/orgs/milkymoney/projects?query=is%3Aclosed)
 * X3 auditing-records
 * X4 Tech/Work Report学号-title
 * X5 [小组分工与贡献率说明](https://milkymoney.github.io/Dashboard/final)
