@@ -17,8 +17,8 @@
 
 请在这里给出重要的软件分析与设计文档链接（暂无）
 
-- [需求规格说明书](https://github.com/milkymoney/Dashboard/blob/master/SRS/SRS.md)
-- [软件设计说明书](https://github.com/milkymoney/Dashboard/blob/master/SDS.md)
+- [需求规格说明书](https://milkymoney.github.io/Dashboard/SRS)
+- [软件设计说明书](https://milkymoney.github.io/Dashboard/SDS)
 - [产品演示视频](https://sysu-swsad.github.io/dashboard/01-about)
 
 ### Iterations
