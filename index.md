@@ -39,5 +39,5 @@
 * X4 个人技术报告
    * [wtysos](https://github.com/milkymoney/Dashboard/blob/master/FinalReport/16340240_%E5%90%B4%E5%A4%A9%E6%89%AC.md)
    * [wuyy1234](https://github.com/milkymoney/Dashboard/blob/master/FinalReport/16340244_%E4%BC%8D%E5%AE%87%E9%98%B3.md)
-   * [erosWu]()
+   * [erosWu](https://github.com/milkymoney/Dashboard/blob/master/FinalReport/16340239_%E5%90%B4%E8%89%AF%E6%BE%94.md)
 * X5 [小组分工与贡献率说明](https://milkymoney.github.io/Dashboard/final)
