@@ -16,7 +16,7 @@
     * 6.5 [System Sequence Diagrams（功能模型）](https://milkymoney.github.io/Dashboard/system)
     * 6.6 Supplementary Requirements（补充需求）
 * 7、[Design（设计说明书）](https://github.com/milkymoney/Dashboard/blob/master/SDS.md)
-    * 7.1 UI design（界面设计）
+    * 7.1 [UI design（界面设计）](https://milkymoney.github.io/Dashboard/UI)
     * 7.2 Database design（数据库设计）
     * 7.3 Interface API design（接口 API 设计）
     * 7.4 Architecture design（架构设计）
