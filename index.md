@@ -34,10 +34,11 @@
    * [Iteration 3(2019/06/4)](https://milkymoney.github.io/Dashboard/iteration3)
 * X2 [KANBAN](https://github.com/orgs/milkymoney/projects?query=is%3Aclosed)
 * X3 auditing-records
-* X4 Tech/Work Report
-   * 学号-title
+* X4 [Tech/Work Report](https://milkymoney.github.io/Dashboard/tech_work_report)
 * X5 Final Report
-   * [学号-wtysos](https://github.com/milkymoney/Dashboard/blob/master/FinalReport/16340240_%E5%90%B4%E5%A4%A9%E6%89%AC.md)
-   * [学号-wuyy1234](https://github.com/milkymoney/Dashboard/blob/master/FinalReport/16340244_%E4%BC%8D%E5%AE%87%E9%98%B3.md)
-   * [学号-erosWu](https://github.com/milkymoney/Dashboard/blob/master/FinalReport/16340239_%E5%90%B4%E8%89%AF%E6%BE%94.md)
+   * [16340240-吴天扬](https://github.com/milkymoney/Dashboard/blob/master/FinalReport/16340240_%E5%90%B4%E5%A4%A9%E6%89%AC.md)
+   * [16340244-伍宇阳](https://github.com/milkymoney/Dashboard/blob/master/FinalReport/16340244_%E4%BC%8D%E5%AE%87%E9%98%B3.md)
+   * [16340239-吴良澔](https://github.com/milkymoney/Dashboard/blob/master/FinalReport/16340239_%E5%90%B4%E8%89%AF%E6%BE%94.md)
+   * [16340245-伍兆贤](https://github.com/milkymoney/Dashboard/blob/master/FinalReport/16340245_wzx.md)
+   * [16340237-吴聪](https://github.com/milkymoney/Dashboard/blob/master/FinalReport/16340237_%E5%90%B4%E8%81%AA.md)
 * X6 [小组分工与贡献率说明](https://milkymoney.github.io/Dashboard/final)
