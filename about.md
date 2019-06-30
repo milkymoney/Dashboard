@@ -15,11 +15,12 @@
 
 ### Documentation
 
-请在这里给出重要的软件分析与设计文档链接（暂无）
+请在这里给出重要的软件分析与设计文档链接
 
 - [需求规格说明书](https://milkymoney.github.io/Dashboard/SRS)
 - [软件设计说明书](https://milkymoney.github.io/Dashboard/SDS)
-- [产品演示视频](https://sysu-swsad.github.io/dashboard/01-about)
+- [用户手册](https://github.com/milkymoney/Dashboard/blob/master/%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8C.md)
+- [产品演示视频](https://github.com/milkymoney/Dashboard/blob/gh-pages/product_display.md)
 
 ### Iterations
 
