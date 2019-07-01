@@ -23,7 +23,7 @@
     * 7.5 [Usecase design（用例设计）](https://milkymoney.github.io/Dashboard/use)
 * 8、生产规范与指南
     * 8.1 [代码规范](https://milkymoney.github.io/Dashboard/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83)
-    * 8.2 REST API 设计规范
+    * 8.2 [REST API 设计规范](https://milkymoney.github.io/Dashboard/API_design_specifications)
     * 8.3 架构设计、详细设计（BCE方法）到应用程序框架映射指南
     * 8.4 [部署说明](https://milkymoney.github.io/Dashboard/Installation_deployment_instructions)
 * 9、[成品展示](https://github.com/milkymoney/Dashboard/blob/gh-pages/product_display.md)
