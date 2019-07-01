@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>11</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>737</x>
+      <y>165</y>
+      <w>264</w>
+      <h>451</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Task
+--
+Id
+Userid
+Type
+Description
+TaskName
+Reward
+Deadline
+Label
+Priority
+MaxAccept
+HasAccept
+FinishNum
+QuestionnaireID
+AcceptRelation
+ReleaseRelation
+--
+GetTaskById
+GetTaskByUserid
+AddTask
+GetTask
+UpdateTask
+DeleteTask
+AcceptTask</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>726</x>
+      <y>671</y>
+      <w>264</w>
+      <h>385</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+User
+--
+Id
+Username
+OpenId
+Balance
+Image
+AcceptRelation
+ReleaseRelation
+--
+AddImageToUser
+GetImageFromUser
+GetUserByName
+GetUserById
+GetUserByOpenId
+AddUser
+GetUser
+UpdateUser
+DeleteUser</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>330</x>
+      <y>264</y>
+      <w>253</w>
+      <h>286</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;controllor&gt;&gt;
+TaskController
+--
+
+--
+GetAllTask
+PublishTask
+GetPublishTask
+PutPublishTask
+DeletePublishTask
+PublisherCheckTaskFinish
+PublisherConfirmTask
+GetAllTaskAccept
+GetUserAcTask
+AcceptTask
+AcceptorCheckFinishTask
+ExecutorSettleupTask</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>572</x>
+      <y>341</y>
+      <w>187</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>150.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>572</x>
+      <y>363</y>
+      <w>176</w>
+      <h>627</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>140.0;550.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>330</x>
+      <y>627</y>
+      <w>253</w>
+      <h>165</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;controllor&gt;&gt;
+UserController
+--
+
+--
+Put
+Login
+Query
+QueryImage
+AddMoney</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>572</x>
+      <y>682</y>
+      <w>176</w>
+      <h>308</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>140.0;260.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>88</x>
+      <y>473</y>
+      <w>110</w>
+      <h>187</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Boundary&gt;&gt;
+Router
+--
+
+
+
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>187</x>
+      <y>429</y>
+      <w>165</w>
+      <h>154</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>130.0;10.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>187</x>
+      <y>550</y>
+      <w>165</w>
+      <h>198</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>130.0;160.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>
