@@ -19,7 +19,7 @@
     * 7.1 [UI design（界面设计）](https://milkymoney.github.io/Dashboard/UI)
     * 7.2 [Database design（数据库设计）](https://milkymoney.github.io/Dashboard/database)
     * 7.3 [Interface API design（接口 API 设计）](https://milkymoney.github.io/Dashboard/api)
-    * 7.4 [Architecture design（架构设计）](https://milkymoney.github.io/Dashboard/architecture)
+    * 7.4 [Architecture design（架构设计）](https://milkymoney.github.io/Dashboard/architecture_design)
     * 7.5 [Usecase design（用例设计）](https://milkymoney.github.io/Dashboard/use)
 * 8、生产规范与指南
     * 8.1 [代码规范](https://milkymoney.github.io/Dashboard/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83)
